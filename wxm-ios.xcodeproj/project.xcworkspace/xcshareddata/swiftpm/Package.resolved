@@ -1,5 +1,4 @@
 {
-  "originHash" : "a3420f86d59cf4e7b580d594f9d47c7b6472948b6716a45a4e8ad28b748bc191",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -13,7 +12,7 @@
     {
       "identity" : "alamofire",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "location" : "https://github.com/Alamofire/Alamofire",
       "state" : {
         "revision" : "f455c2975872ccd2d9c81594c658af65716e9b9a",
         "version" : "5.9.1"
@@ -24,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/app-check.git",
       "state" : {
-        "revision" : "7d2688de038d5484866d835acb47b379722d610e",
-        "version" : "10.19.0"
+        "revision" : "076b241a625e25eac22f8849be256dfb960fcdfe",
+        "version" : "10.19.1"
       }
     },
     {
@@ -51,8 +50,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk.git",
       "state" : {
-        "revision" : "42eae77a0af79e9c3f41df04a23c76f05cfdda77",
-        "version" : "10.24.0"
+        "revision" : "9d17b500cd98d9a7009751ad62f802e152e97021",
+        "version" : "10.26.0"
       }
     },
     {
@@ -60,8 +59,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
       "state" : {
-        "revision" : "51ba746a9d51a4bd0774b68499b0c73ef6e8570d",
-        "version" : "10.24.0"
+        "revision" : "16244d177c4e989f87b25e9db1012b382cfedc55",
+        "version" : "10.25.0"
       }
     },
     {
@@ -78,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleUtilities.git",
       "state" : {
-        "revision" : "26c898aed8bed13b8a63057ee26500abbbcb8d55",
-        "version" : "7.13.1"
+        "revision" : "57a1d307f42df690fdef2637f3e5b776da02aad6",
+        "version" : "7.13.3"
       }
     },
     {
@@ -175,7 +174,7 @@
     {
       "identity" : "mapbox-maps-ios",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/mapbox/mapbox-maps-ios.git",
+      "location" : "https://github.com/mapbox/mapbox-maps-ios/",
       "state" : {
         "revision" : "935c658a4d4d454de0e81e0b49ed291bd2c756a9",
         "version" : "11.3.0"
@@ -195,8 +194,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mixpanel/mixpanel-swift",
       "state" : {
-        "revision" : "2dc2121b6dff467090164e9d967af332ea47ce19",
-        "version" : "4.2.6"
+        "revision" : "7f73084879cf6f8c50ab93e34ab0aae2569b04a8",
+        "version" : "4.2.7"
       }
     },
     {
@@ -285,8 +284,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Swinject/Swinject",
       "state" : {
-        "revision" : "c7920e1f2b237ee16150ab82388d7411b578d355",
-        "version" : "2.8.7"
+        "revision" : "3125943807991bc271d366205d98713696d65a1f",
+        "version" : "2.8.8"
       }
     },
     {
@@ -317,5 +316,5 @@
       }
     }
   ],
-  "version" : 3
+  "version" : 2
 }
