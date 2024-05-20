@@ -21,6 +21,8 @@
 		098F627C2BFA0D7C00398D7D /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74E29FA0282A9FC800925E4C /* Colors.xcassets */; };
 		09D9FB952BFA1CD70026EDA3 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9FB942BFA1CD70026EDA3 /* LogInView.swift */; };
 		09D9FB972BFA1CE50026EDA3 /* LoggedOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9FB962BFA1CE50026EDA3 /* LoggedOutView.swift */; };
+		09D9FBA02BFA58150026EDA3 /* WeatherStationsHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9FB9F2BFA58150026EDA3 /* WeatherStationsHomeView.swift */; };
+		09D9FBA22BFA59A90026EDA3 /* StationDetailsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9FBA12BFA59A90026EDA3 /* StationDetailsContainerView.swift */; };
 		2612AC1A2AB45B1700285896 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2612AC192AB45B1700285896 /* FilterView.swift */; };
 		2612AC1C2AB45B2800285896 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2612AC1B2AB45B2800285896 /* FilterViewModel.swift */; };
 		2612AC3A2AB47BA200285896 /* LocalizableString+Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2612AC392AB47BA200285896 /* LocalizableString+Filters.swift */; };
@@ -586,6 +588,8 @@
 		091AA6752BF8F8DA00DC6382 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		09D9FB942BFA1CD70026EDA3 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		09D9FB962BFA1CE50026EDA3 /* LoggedOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOutView.swift; sourceTree = "<group>"; };
+		09D9FB9F2BFA58150026EDA3 /* WeatherStationsHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStationsHomeView.swift; sourceTree = "<group>"; };
+		09D9FBA12BFA59A90026EDA3 /* StationDetailsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailsContainerView.swift; sourceTree = "<group>"; };
 		2612AC192AB45B1700285896 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		2612AC1B2AB45B2800285896 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		2612AC392AB47BA200285896 /* LocalizableString+Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizableString+Filters.swift"; sourceTree = "<group>"; };
@@ -1064,6 +1068,8 @@
 				091AA6702BF8F8D800DC6382 /* ContentView.swift */,
 				09D9FB942BFA1CD70026EDA3 /* LogInView.swift */,
 				09D9FB962BFA1CE50026EDA3 /* LoggedOutView.swift */,
+				09D9FB9F2BFA58150026EDA3 /* WeatherStationsHomeView.swift */,
+				09D9FBA12BFA59A90026EDA3 /* StationDetailsContainerView.swift */,
 				091AA6722BF8F8DA00DC6382 /* Assets.xcassets */,
 				091AA6742BF8F8DA00DC6382 /* Preview Content */,
 			);
@@ -2782,7 +2788,9 @@
 				098F62762BFA0C4D00398D7D /* AssetEnum.swift in Sources */,
 				098F62782BFA0C9300398D7D /* Image+.swift in Sources */,
 				091AA6712BF8F8D800DC6382 /* ContentView.swift in Sources */,
+				09D9FBA02BFA58150026EDA3 /* WeatherStationsHomeView.swift in Sources */,
 				09D9FB972BFA1CE50026EDA3 /* LoggedOutView.swift in Sources */,
+				09D9FBA22BFA59A90026EDA3 /* StationDetailsContainerView.swift in Sources */,
 				091AA66F2BF8F8D800DC6382 /* wxm_watchosApp.swift in Sources */,
 				098F627A2BFA0CE100398D7D /* FontSizeEnum.swift in Sources */,
 				09D9FB952BFA1CD70026EDA3 /* LogInView.swift in Sources */,
