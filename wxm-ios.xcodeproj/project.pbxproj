@@ -32,6 +32,8 @@
 		09D9FBA92BFD1EF60026EDA3 /* Font Awesome 6 Pro-Light-300.otf in Resources */ = {isa = PBXBuildFile; fileRef = 26348E152A444AF1000846C6 /* Font Awesome 6 Pro-Light-300.otf */; };
 		09D9FBAA2BFD1EF60026EDA3 /* Font Awesome 6 Sharp-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = 26348E162A444AF1000846C6 /* Font Awesome 6 Sharp-Solid-900.otf */; };
 		09D9FBAB2BFD1F080026EDA3 /* FontsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26348E242A444BEE000846C6 /* FontsEnum.swift */; };
+		09D9FBAD2BFD475E0026EDA3 /* WXMCardStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675470929A9181E008BCF40 /* WXMCardStyle.swift */; };
+		09D9FBB02BFD482D0026EDA3 /* Dimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9FBAF2BFD482D0026EDA3 /* Dimensions.swift */; };
 		2612AC1A2AB45B1700285896 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2612AC192AB45B1700285896 /* FilterView.swift */; };
 		2612AC1C2AB45B2800285896 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2612AC1B2AB45B2800285896 /* FilterViewModel.swift */; };
 		2612AC3A2AB47BA200285896 /* LocalizableString+Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2612AC392AB47BA200285896 /* LocalizableString+Filters.swift */; };
@@ -600,6 +602,7 @@
 		09D9FB9F2BFA58150026EDA3 /* WeatherStationsHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStationsHomeView.swift; sourceTree = "<group>"; };
 		09D9FBA12BFA59A90026EDA3 /* StationDetailsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailsContainerView.swift; sourceTree = "<group>"; };
 		09D9FBAC2BFD209A0026EDA3 /* wxm-watchos-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "wxm-watchos-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		09D9FBAF2BFD482D0026EDA3 /* Dimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimensions.swift; sourceTree = "<group>"; };
 		2612AC192AB45B1700285896 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		2612AC1B2AB45B2800285896 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		2612AC392AB47BA200285896 /* LocalizableString+Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizableString+Filters.swift"; sourceTree = "<group>"; };
@@ -1081,6 +1084,7 @@
 				09D9FB962BFA1CE50026EDA3 /* LoggedOutView.swift */,
 				09D9FB9F2BFA58150026EDA3 /* WeatherStationsHomeView.swift */,
 				09D9FBA12BFA59A90026EDA3 /* StationDetailsContainerView.swift */,
+				09D9FBAF2BFD482D0026EDA3 /* Dimensions.swift */,
 				091AA6722BF8F8DA00DC6382 /* Assets.xcassets */,
 				091AA6742BF8F8DA00DC6382 /* Preview Content */,
 			);
@@ -2804,6 +2808,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				098F627B2BFA0CFC00398D7D /* Color+.swift in Sources */,
+				09D9FBAD2BFD475E0026EDA3 /* WXMCardStyle.swift in Sources */,
 				09D9FBAB2BFD1F080026EDA3 /* FontsEnum.swift in Sources */,
 				098F62762BFA0C4D00398D7D /* AssetEnum.swift in Sources */,
 				098F62782BFA0C9300398D7D /* Image+.swift in Sources */,
@@ -2814,6 +2819,7 @@
 				091AA66F2BF8F8D800DC6382 /* wxm_watchosApp.swift in Sources */,
 				098F627A2BFA0CE100398D7D /* FontSizeEnum.swift in Sources */,
 				09D9FB952BFA1CD70026EDA3 /* LogInView.swift in Sources */,
+				09D9FBB02BFD482D0026EDA3 /* Dimensions.swift in Sources */,
 				098F62792BFA0CBA00398D7D /* ColorEnum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
