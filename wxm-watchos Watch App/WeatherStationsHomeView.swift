@@ -14,7 +14,19 @@ struct WeatherStationsHomeView: View {
                 NavigationLink {
                     StationDetailsContainerView(index: index)
                 } label: {
-                    Text("\(index) - Hello, World!")
+                    VStack {
+                        Text("3 letters name")
+                        HStack(spacing: CGFloat(8.0)) {
+                            Text(FontIcon.hexagon.rawValue)
+                                .font(.fontAwesome(font: .FAPro, size: 10.0))
+                                .foregroundColor(Color.white)
+
+                            Text("address")
+                                .font(.system(size: CGFloat(10.0)))
+                                .foregroundColor(Color.white)
+                                .lineLimit(1)
+                        }
+                    }
                 }
             }
             .navigationTitle("Select a Station")
