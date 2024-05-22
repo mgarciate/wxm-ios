@@ -16,6 +16,7 @@ struct WeatherStationsHomeView: View {
                 } label: {
                     VStack(alignment: .leading) {
                         Text("3 letters name")
+                            .lineLimit(1)
                         HStack {
 //                            HStack(spacing: 0.0) {
 //                                Image(asset: .wifi)
