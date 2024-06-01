@@ -8,14 +8,78 @@
 import SwiftUI
 
 struct StationDetailsContainerView: View {
-    var index: Int
+    let device: NetworkDevicesResponse
     
     var body: some View {
-        Text("\(index) - Hello, World!")
-            .navigationTitle("Station \(index)")
+        VStack(spacing: CGFloat(Dimension.defaultSpacing)) {
+            Group {
+                HStack(spacing: 0.0) {
+                    VStack(spacing: 0.0) {
+                        Image(device.currentWeather?.icon ?? "")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: CGFloat(.weatherIconMinDimension), height: CGFloat(.weatherIconMinDimension))
+                        
+                        Text(attributedTemperatureString)
+                            .lineLimit(1)
+                            .fixedSize()
+                            .minimumScaleFactor(0.8)
+                        
+                        Text(attributedFeelsLikeString)
+                            .fixedSize()
+                    }
+                }
+            }
+            .WXMCardStyle(backgroundColor: Color(colorEnum: .top),
+                          insideHorizontalPadding: CGFloat(.defaultSidePadding),
+                          insideVerticalPadding: CGFloat(.minimumPadding),
+                          cornerRadius: CGFloat(.cardCornerRadius))
+        }
+        .background {
+            Color(colorEnum: .top)
+        }
+        .navigationTitle(device.address ?? "")
+    }
+
+    var attributedTemperatureString: AttributedString {
+        let font = UIFont.systemFont(ofSize: CGFloat(.largeTitleFontSize))
+        let temperatureLiterals = (value: "10.0", unit: "ºC")
+        
+        var attributedString = AttributedString("\(temperatureLiterals.value)\(temperatureLiterals.unit)")
+        attributedString.font = font
+        attributedString.foregroundColor = Color(colorEnum: .text)
+        
+        if let unitRange = attributedString.range(of: temperatureLiterals.unit) {
+            let superScriptFont = UIFont.systemFont(ofSize: CGFloat(.largeTitleFontSize))
+            attributedString[unitRange].foregroundColor = Color(colorEnum: .darkGrey)
+            attributedString[unitRange].font = superScriptFont
+        }
+        
+        return attributedString
+    }
+    
+    var attributedFeelsLikeString: AttributedString {
+        let feelsLikeLiteral = LocalizableString.feelsLike.localized
+        let temperatureLiterals = (value: "10.0", unit: "ºC")
+        
+        var attributedString = AttributedString("\(feelsLikeLiteral) \(temperatureLiterals.value)\(temperatureLiterals.unit)")
+        attributedString.font = .system(size: CGFloat(.littleCaption))
+        attributedString.foregroundColor = Color(colorEnum: .darkestBlue)
+        
+        if let temperatureRange = attributedString.range(of: temperatureLiterals.value) {
+            attributedString[temperatureRange].font = .system(size: CGFloat(.smallFontSize), weight: .bold)
+            attributedString[temperatureRange].foregroundColor = Color(colorEnum: .text)
+        }
+        
+        if let unitRange = attributedString.range(of: temperatureLiterals.unit) {
+            attributedString[unitRange].font = .system(size: CGFloat(.littleCaption))
+            attributedString[unitRange].foregroundColor = Color(colorEnum: .darkGrey)
+        }
+        
+        return attributedString
     }
 }
 
 #Preview {
-    StationDetailsContainerView(index: 1)
+    StationDetailsContainerView(device: NetworkDevicesResponse.dummyData[0])
 }
