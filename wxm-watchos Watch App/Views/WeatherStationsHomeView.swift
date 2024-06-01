@@ -47,7 +47,7 @@ struct WeatherStationsHomeView<ViewModel>: View where ViewModel: WeatherStations
                     WeatherStationCellView(device: device)
                 }
             }
-            .navigationTitle("Select a station")
+            .navigationTitle("Fav stations")
             .listStyle(.carousel)
         }
         .background {
