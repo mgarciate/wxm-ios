@@ -1,13 +1,13 @@
 //
-//  StationDetailsContainerView.swift
+//  CurrentWeatherView.swift
 //  wxm-watchos Watch App
 //
-//  Created by mgarciate on 19/5/24.
+//  Created by mgarciate on 1/6/24.
 //
 
 import SwiftUI
 
-struct StationDetailsContainerView: View {
+struct CurrentWeatherView: View {
     let device: NetworkDevicesResponse
     private let unitsManager = WeatherUnitsManager()
     
@@ -34,14 +34,10 @@ struct StationDetailsContainerView: View {
             .WXMCardStyle(backgroundColor: Color(colorEnum: .top),
                           insideHorizontalPadding: CGFloat(.defaultSidePadding),
                           insideVerticalPadding: CGFloat(.minimumPadding),
-                          cornerRadius: CGFloat(.cardCornerRadius))
+                      cornerRadius: CGFloat(.cardCornerRadius))
         }
-        .background {
-            Color(colorEnum: .top)
-        }
-        .navigationTitle(device.address ?? "")
     }
-
+    
     var attributedTemperatureString: AttributedString {
         let font = UIFont.systemFont(ofSize: CGFloat(.largeTitleFontSize))
         let temperatureLiterals: WeatherValueLiterals = WeatherField.temperature.weatherLiterals(from: device.currentWeather, unitsManager: unitsManager) ?? ("", "")
@@ -82,5 +78,5 @@ struct StationDetailsContainerView: View {
 }
 
 #Preview {
-    StationDetailsContainerView(device: NetworkDevicesResponse.dummyData[0])
+    CurrentWeatherView(device: NetworkDevicesResponse.dummyData[0])
 }

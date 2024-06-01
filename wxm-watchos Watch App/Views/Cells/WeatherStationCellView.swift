@@ -13,7 +13,7 @@ struct WeatherStationCellView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(device.address ?? "no address")
+                Text(device.address ?? device.name ?? "no address")
                     .lineLimit(1)
                 HStack {
                     //                            HStack(spacing: 0.0) {

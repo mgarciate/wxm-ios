@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        WeatherStationsHomeView(viewModel: WeatherStationsHomeViewModel())
+        WeatherStationsNearView(viewModel: WeatherStationsNearViewModel())
     }
 }
 

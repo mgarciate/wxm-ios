@@ -14,11 +14,27 @@ enum ApiError: Error {
     case unauthorized
 }
 
-enum ApiEndpoint: String {
-    case login = "auth/login"
-    case refresh = "auth/refresh"
-    case myDevices = "me/devices"
-    case cells = "cells"
+enum ApiEndpoint {
+    case login
+    case refresh
+    case myDevices
+    case cells
+    case devicesByCell(cellId: String)
+    
+    var rawValue: String {
+        switch self {
+        case .login:
+            return "auth/login"
+        case .refresh:
+            return "auth/refresh"
+        case .myDevices:
+            return "me/devices"
+        case .cells:
+            return "cells"
+        case .devicesByCell(let cellId):
+            return "cells/\(cellId)/devices"
+        }
+    }
 }
 
 actor TokenManager {

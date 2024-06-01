@@ -1,20 +1,20 @@
 //
-//  WeatherStationsHomeView.swift
+//  WeatherStationsNearView.swift
 //  wxm-watchos Watch App
 //
-//  Created by mgarciate on 19/5/24.
+//  Created by mgarciate on 1/6/24.
 //
 
 import SwiftUI
 
-protocol WeatherStationsHomeViewModelProtocol: ObservableObject {
+protocol WeatherStationsNearViewModelProtocol: ObservableObject {
     var devices: [NetworkDevicesResponse] { get set }
     
     func fetchData() async
 }
 
-final class WeatherStationsHomeViewModel: WeatherStationsHomeViewModelProtocol {
-    @Published var devices: [NetworkDevicesResponse] = NetworkDevicesResponse.dummyData
+final class WeatherStationsNearViewModel: WeatherStationsNearViewModelProtocol {
+    @Published var devices = [NetworkDevicesResponse]()
     
     init() {
         // TODO: Delete, just for testing
@@ -35,19 +35,11 @@ final class WeatherStationsHomeViewModel: WeatherStationsHomeViewModelProtocol {
     
     func fetchData() async {
         do {
-            #if DEBUG
-            print("Run devices endpoint")
-            #endif
-            let devices = try await NetworkService<[NetworkDevicesResponse]>().get(endpoint: .myDevices)
-            await MainActor.run {
-                self.devices = devices
-            }
             print("Start call")
             let cells = try await NetworkService<[PublicHex]>().get(endpoint: .cells)
             
-            let location = LocationCoordinates(lat: 50.92412074211983, long: -1.3339991931905284)
-            var count = 0
-            cells.forEach { cell in
+            let location = LocationCoordinates(lat: 45.788953151906384, long: 24.02408932624046)
+            for cell in cells {
                 var hexagon: [LocationCoordinates] = []
                 cell.polygon.forEach { point in
                     hexagon.append(LocationCoordinates(lat: point.lat, long: point.lon))
@@ -56,10 +48,17 @@ final class WeatherStationsHomeViewModel: WeatherStationsHomeViewModelProtocol {
                 if isInside {
                     print("Is the location inside the hexagon? \(isInside)")
                     print("Cell \(cell)")
+                    var devicesByCell = try await NetworkService<[NetworkDevicesResponse]>().get(endpoint: .devicesByCell(cellId: cell.index))
+                    for i in devicesByCell.indices {
+                        devicesByCell[i].location = LocationCoordinates(lat: cell.center.lat, long: cell.center.lon)
+                    }
+                    let devices = devicesByCell
+                    await MainActor.run {
+                        self.devices.append(contentsOf: devices)
+                    }
                 }
-                count += 1
             }
-            print("End with \(cells.count) - \(count)")
+            print("End with \(cells.count)")
         } catch {
             #if DEBUG
             print("Error", error)
@@ -68,7 +67,7 @@ final class WeatherStationsHomeViewModel: WeatherStationsHomeViewModelProtocol {
     }
 }
 
-struct WeatherStationsHomeView<ViewModel>: View where ViewModel: WeatherStationsHomeViewModelProtocol {
+struct WeatherStationsNearView<ViewModel>: View where ViewModel: WeatherStationsNearViewModelProtocol {
     @StateObject var viewModel: ViewModel
     
     var body: some View {
@@ -80,7 +79,7 @@ struct WeatherStationsHomeView<ViewModel>: View where ViewModel: WeatherStations
                     WeatherStationCellView(device: device)
                 }
             }
-            .navigationTitle("Select a Station")
+            .navigationTitle("Near stations")
             .listStyle(.carousel)
         }
         .background {
@@ -93,5 +92,7 @@ struct WeatherStationsHomeView<ViewModel>: View where ViewModel: WeatherStations
 }
 
 #Preview {
-    WeatherStationsHomeView(viewModel: WeatherStationsHomeViewModel())
+    let viewModel = WeatherStationsNearViewModel()
+    viewModel.devices = NetworkDevicesResponse.dummyData
+    return WeatherStationsNearView(viewModel: viewModel)
 }
