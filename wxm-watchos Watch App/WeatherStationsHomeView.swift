@@ -16,7 +16,22 @@ protocol WeatherStationsHomeViewModelProtocol: ObservableObject {
 final class WeatherStationsHomeViewModel: WeatherStationsHomeViewModelProtocol {
     @Published var devices: [NetworkDevicesResponse] = NetworkDevicesResponse.dummyData
     
-    init() {}
+    init() {
+        // TODO: Delete, just for testing
+//        let hexagon: [LocationCoordinates] = [
+//            LocationCoordinates(lat: 37.7749, long: -122.4194),
+//            LocationCoordinates(lat: 37.7799, long: -122.4144),
+//            LocationCoordinates(lat: 37.7849, long: -122.4194),
+//            LocationCoordinates(lat: 37.7799, long: -122.4244),
+//            LocationCoordinates(lat: 37.7749, long: -122.4294),
+//            LocationCoordinates(lat: 37.7699, long: -122.4244)
+//        ]
+//
+//        let location = LocationCoordinates(lat: 37.777, long: -122.422)
+//
+//        let isInside = WOSLocationManager.isPointInPolygon(point: location, polygon: hexagon)
+//        print("Is the location inside the hexagon? \(isInside)")
+    }
     
     func fetchData() async {
         do {
@@ -27,6 +42,24 @@ final class WeatherStationsHomeViewModel: WeatherStationsHomeViewModelProtocol {
             await MainActor.run {
                 self.devices = devices
             }
+            print("Start call")
+            let cells = try await NetworkService<[PublicHex]>().get(endpoint: .cells)
+            
+            let location = LocationCoordinates(lat: 50.92412074211983, long: -1.3339991931905284)
+            var count = 0
+            cells.forEach { cell in
+                var hexagon: [LocationCoordinates] = []
+                cell.polygon.forEach { point in
+                    hexagon.append(LocationCoordinates(lat: point.lat, long: point.lon))
+                }
+                let isInside = WOSLocationManager.isPointInPolygon(point: location, polygon: hexagon)
+                if isInside {
+                    print("Is the location inside the hexagon? \(isInside)")
+                    print("Cell \(cell)")
+                }
+                count += 1
+            }
+            print("End with \(cells.count) - \(count)")
         } catch {
             #if DEBUG
             print("Error", error)
@@ -44,62 +77,7 @@ struct WeatherStationsHomeView<ViewModel>: View where ViewModel: WeatherStations
                 NavigationLink {
                     StationDetailsContainerView(device: device)
                 } label: {
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(device.address ?? "no address")
-                                .lineLimit(1)
-                            HStack {
-    //                            HStack(spacing: 0.0) {
-    //                                Image(asset: .wifi)
-    //                                    .renderingMode(.template)
-    //                                    .foregroundColor(Color(colorEnum: configuration.stateColor))
-    //
-    //                                Text(configuration.lastActiveAt?.lastActiveTime() ?? "-")
-    //                                    .font(.system(size: CGFloat(.caption)))
-    //                                    .foregroundColor(Color(colorEnum: configuration.stateColor))
-    //                                    .padding(.trailing, CGFloat(.smallSidePadding))
-    //                            }
-    //                            .WXMCardStyle(backgroundColor: Color(colorEnum: configuration.tintColor),
-    //                                          insideHorizontalPadding: 0.0,
-    //                                          insideVerticalPadding: 0.0,
-    //                                          cornerRadius: CGFloat(.buttonCornerRadius))
-                                HStack(spacing: 0.0) {
-                                    Image(asset: .wifi)
-                                        .renderingMode(.template)
-                                        .foregroundColor(Color.blue)
-
-                                    Text(device.attributes.lastActiveAt?.lastActiveTime() ?? "no data")
-                                        .font(.system(size: CGFloat(10.0)))
-                                        .foregroundColor(Color.green)
-                                        .padding(.trailing, CGFloat(4))
-                                }
-                                .WXMCardStyle(backgroundColor: Color.pink,
-                                              insideHorizontalPadding: 0.0,
-                                              insideVerticalPadding: 0.0,
-                                              cornerRadius: CGFloat(4))
-//                                HStack(spacing: CGFloat(8.0)) {
-//                                    Text(FontIcon.hexagon.rawValue)
-//                                        .font(.fontAwesome(font: .FAPro, size: 10.0))
-//                                        .foregroundColor(Color(colorEnum: .text))
-//
-//                                    Text("address")
-//                                        .font(.system(size: CGFloat(10.0)))
-//                                        .foregroundColor(Color(colorEnum: .text))
-//                                        .lineLimit(1)
-//                                }
-//                                .WXMCardStyle(backgroundColor: Color(colorEnum: .blueTint),
-//                                              insideHorizontalPadding: CGFloat(8),
-//                                              insideVerticalPadding: CGFloat(4),
-//                                          cornerRadius: CGFloat(4))
-                            }
-                        }
-                        if let temperature = device.currentWeather?.temperature {
-                            Text("\(Int(round(temperature)))º")
-                        } else {
-                            Text("-º")
-                        }
-                    }
-                    .background(Color.green)
+                    WeatherStationCellView(device: device)
                 }
             }
             .navigationTitle("Select a Station")
