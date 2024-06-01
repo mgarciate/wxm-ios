@@ -2,7 +2,7 @@
 //  LoggedOutView.swift
 //  wxm-watchos Watch App
 //
-//  Created by Marcelino on 19/5/24.
+//  Created by mgarciate on 19/5/24.
 //
 
 import SwiftUI

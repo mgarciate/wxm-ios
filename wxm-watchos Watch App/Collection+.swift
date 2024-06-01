@@ -2,7 +2,7 @@
 //  Collection+.swift
 //  wxm-watchos Watch App
 //
-//  Created by Marcelino on 1/6/24.
+//  Created by mgarciate on 1/6/24.
 //
 
 import Foundation
