@@ -224,6 +224,7 @@ extension NetworkDevicesResponse {
         device.address = "Address \(index)"
         device.currentWeather = CurrentWeather()
         device.currentWeather?.temperature = 14.4
+        device.currentWeather?.feelsLike = 12.5
         device.attributes = Attributes()
         device.attributes.isActive = (index % 2) == 0
         device.attributes.lastActiveAt = "2024-05-\("\(index)".padding(toLength: 2, withPad: "0", startingAt: 0))T23:09:12+01:00"

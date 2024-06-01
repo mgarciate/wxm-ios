@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StationDetailsContainerView: View {
     let device: NetworkDevicesResponse
+    private let unitsManager = WeatherUnitsManager()
     
     var body: some View {
         VStack(spacing: CGFloat(Dimension.defaultSpacing)) {
@@ -43,7 +44,7 @@ struct StationDetailsContainerView: View {
 
     var attributedTemperatureString: AttributedString {
         let font = UIFont.systemFont(ofSize: CGFloat(.largeTitleFontSize))
-        let temperatureLiterals = (value: "10.0", unit: "ºC")
+        let temperatureLiterals: WeatherValueLiterals = WeatherField.temperature.weatherLiterals(from: device.currentWeather, unitsManager: unitsManager) ?? ("", "")
         
         var attributedString = AttributedString("\(temperatureLiterals.value)\(temperatureLiterals.unit)")
         attributedString.font = font
@@ -60,7 +61,7 @@ struct StationDetailsContainerView: View {
     
     var attributedFeelsLikeString: AttributedString {
         let feelsLikeLiteral = LocalizableString.feelsLike.localized
-        let temperatureLiterals = (value: "10.0", unit: "ºC")
+        let temperatureLiterals: WeatherValueLiterals = WeatherField.feelsLike.weatherLiterals(from: device.currentWeather, unitsManager: unitsManager) ?? ("", "")
         
         var attributedString = AttributedString("\(feelsLikeLiteral) \(temperatureLiterals.value)\(temperatureLiterals.unit)")
         attributedString.font = .system(size: CGFloat(.littleCaption))
