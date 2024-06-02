@@ -41,6 +41,7 @@ final class WeatherStationsHomeViewModel: WeatherStationsHomeViewModelProtocol {
 
 struct WeatherStationsHomeView<ViewModel>: View where ViewModel: WeatherStationsHomeViewModelProtocol {
     @StateObject var viewModel: ViewModel
+    @ObservedObject var locationService = LocationService()
     @State private var showNearDevices = false
     
     var body: some View {
@@ -66,11 +67,11 @@ struct WeatherStationsHomeView<ViewModel>: View where ViewModel: WeatherStations
                             HStack {
                                 Spacer()
                                 ZStack {
-                                    NavigationLink(destination: WeatherStationsNearView(viewModel: WeatherStationsNearViewModel()), isActive: $showNearDevices) {
+                                    NavigationLink(destination: WeatherStationsNearView(viewModel: WeatherStationsNearViewModel(latitude: locationService.latitude, longitude: locationService.longitude)), isActive: $locationService.locationReceived) {
                                         EmptyView()
                                     }
                                     Button(action: {
-                                        showNearDevices = true
+                                        locationService.requestLocation()
                                     }) {
                                         Image(.detectLocation)
                                             .renderingMode(.template)

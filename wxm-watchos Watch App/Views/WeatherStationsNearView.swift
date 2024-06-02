@@ -15,10 +15,14 @@ protocol WeatherStationsNearViewModelProtocol: ObservableObject {
 }
 
 final class WeatherStationsNearViewModel: WeatherStationsNearViewModelProtocol {
-    @Published var isLoading = true
+    @Published var isLoading = false
     @Published var devices = [NetworkDevicesResponse]()
+    let latitude: Double?
+    let longitude: Double?
     
-    init() {
+    init(latitude: Double?, longitude: Double?) {
+        self.latitude = latitude
+        self.longitude = longitude
         // TODO: Delete, just for testing
 //        let hexagon: [LocationCoordinates] = [
 //            LocationCoordinates(lat: 37.7749, long: -122.4194),
@@ -36,6 +40,7 @@ final class WeatherStationsNearViewModel: WeatherStationsNearViewModelProtocol {
     }
     
     func fetchData() async {
+        guard let latitude, let longitude else { return }
         await MainActor.run {
             isLoading = true
         }
@@ -43,7 +48,8 @@ final class WeatherStationsNearViewModel: WeatherStationsNearViewModelProtocol {
             print("Start call")
             let cells = try await NetworkService<[PublicHex]>().get(endpoint: .cells)
             
-            let location = LocationCoordinates(lat: 45.788953151906384, long: 24.02408932624046)
+//            let location = LocationCoordinates(lat: 45.788953151906384, long: 24.02408932624046)
+            let location = LocationCoordinates(lat: latitude, long: longitude)
             for cell in cells {
                 var hexagon: [LocationCoordinates] = []
                 cell.polygon.forEach { point in
@@ -62,9 +68,11 @@ final class WeatherStationsNearViewModel: WeatherStationsNearViewModelProtocol {
                     let devices = devicesByCell
                     await MainActor.run {
                         self.devices.append(contentsOf: devices)
-                        isLoading = false
                     }
                 }
+            }
+            await MainActor.run {
+                isLoading = false
             }
             print("End with \(cells.count)")
         } catch {
@@ -106,7 +114,7 @@ struct WeatherStationsNearView<ViewModel>: View where ViewModel: WeatherStations
 }
 
 #Preview {
-    let viewModel = WeatherStationsNearViewModel()
+    let viewModel = WeatherStationsNearViewModel(latitude: 0.0, longitude: 0.0)
     viewModel.devices = NetworkDevicesResponse.dummyData
     return WeatherStationsNearView(viewModel: viewModel)
 }

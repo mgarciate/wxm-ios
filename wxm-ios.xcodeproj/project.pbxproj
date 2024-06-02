@@ -77,6 +77,7 @@
 		09C7F55C2C0C8249001B2E04 /* WeatherXMWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F55B2C0C8249001B2E04 /* WeatherXMWidgetBundle.swift */; };
 		09C7F55E2C0C83F9001B2E04 /* NetworkStatsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F55D2C0C83F9001B2E04 /* NetworkStatsResponse.swift */; };
 		09C7F55F2C0C865E001B2E04 /* NetworkStatsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F55D2C0C83F9001B2E04 /* NetworkStatsResponse.swift */; };
+		09C7F5622C0C88A2001B2E04 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F5612C0C88A2001B2E04 /* LocationService.swift */; };
 		09D9FB952BFA1CD70026EDA3 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9FB942BFA1CD70026EDA3 /* LogInView.swift */; };
 		09D9FB972BFA1CE50026EDA3 /* LoggedOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9FB962BFA1CE50026EDA3 /* LoggedOutView.swift */; };
 		09D9FBA02BFA58150026EDA3 /* WeatherStationsHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9FB9F2BFA58150026EDA3 /* WeatherStationsHomeView.swift */; };
@@ -710,6 +711,7 @@
 		09C7F5592C0C7E88001B2E04 /* TotalWeatherStationsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalWeatherStationsWidget.swift; sourceTree = "<group>"; };
 		09C7F55B2C0C8249001B2E04 /* WeatherXMWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherXMWidgetBundle.swift; sourceTree = "<group>"; };
 		09C7F55D2C0C83F9001B2E04 /* NetworkStatsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatsResponse.swift; sourceTree = "<group>"; };
+		09C7F5612C0C88A2001B2E04 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		09D9FB942BFA1CD70026EDA3 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		09D9FB962BFA1CE50026EDA3 /* LoggedOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOutView.swift; sourceTree = "<group>"; };
 		09D9FB9F2BFA58150026EDA3 /* WeatherStationsHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStationsHomeView.swift; sourceTree = "<group>"; };
@@ -1222,6 +1224,7 @@
 		09C7F4E72C0A24F3001B2E04 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				09C7F5602C0C888C001B2E04 /* Location */,
 				09C7F4EA2C0A2823001B2E04 /* Login */,
 				09C7F4E82C0A2507001B2E04 /* NetworkService.swift */,
 			);
@@ -1325,6 +1328,14 @@
 				09C7F5442C0C6AA7001B2E04 /* Info.plist */,
 			);
 			path = WMXPriceComplicationWidget;
+			sourceTree = "<group>";
+		};
+		09C7F5602C0C888C001B2E04 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				09C7F5612C0C88A2001B2E04 /* LocationService.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		2612AC182AB45AFA00285896 /* Filters */ = {
@@ -3121,6 +3132,7 @@
 				098F62792BFA0CBA00398D7D /* ColorEnum.swift in Sources */,
 				09C7F4EE2C0A285D001B2E04 /* LoginResponse.swift in Sources */,
 				09C7F4EC2C0A2832001B2E04 /* LoginRequest.swift in Sources */,
+				09C7F5622C0C88A2001B2E04 /* LocationService.swift in Sources */,
 				09C7F5322C0BCBF1001B2E04 /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3587,6 +3599,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "wxm-watchos-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "wxm-watchos";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show latitude and longitude";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.weatherxm.app.debug;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
@@ -3626,6 +3639,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "wxm-watchos-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "wxm-watchos";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show latitude and longitude";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.weatherxm.app.debug;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
@@ -3665,6 +3679,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "wxm-watchos-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "wxm-watchos";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show latitude and longitude";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.weatherxm.app.debug;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
