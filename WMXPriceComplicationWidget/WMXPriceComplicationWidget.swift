@@ -21,7 +21,7 @@ struct Provider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         CoinGeckoNetworkManager.shared.fetchWXMTokenPrice { price in
             let currentDate = Date()
-            let entry = SimpleEntry(date: currentDate, tokenPrice: price ?? 0.0)
+            let entry = SimpleEntry(date: currentDate, tokenPrice: price ?? 1.09)
             
             let timeline = Timeline(entries: [entry], policy: .atEnd)
             completion(timeline)
@@ -61,7 +61,6 @@ struct WMXPriceComplicationWidgetEntryView : View {
     }
 }
 
-@main
 struct WMXPriceComplicationWidget: Widget {
     let kind: String = "WMXPriceComplicationWidget"
 
@@ -70,7 +69,7 @@ struct WMXPriceComplicationWidget: Widget {
             WMXPriceComplicationWidgetEntryView(entry: entry)
                     .containerBackground(.fill.tertiary, for: .widget)
         }
-        .configurationDisplayName("WXM")
+        .configurationDisplayName("WXM price")
         .description("Show the WXM token price")
         .supportedFamilies([.accessoryInline, .accessoryCorner])
     }

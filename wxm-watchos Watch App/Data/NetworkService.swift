@@ -20,6 +20,7 @@ enum ApiEndpoint {
     case myDevices
     case cells
     case devicesByCell(cellId: String)
+    case networkStats
     
     var rawValue: String {
         switch self {
@@ -33,6 +34,8 @@ enum ApiEndpoint {
             return "cells"
         case .devicesByCell(let cellId):
             return "cells/\(cellId)/devices"
+        case .networkStats:
+            return "network/stats"
         }
     }
 }

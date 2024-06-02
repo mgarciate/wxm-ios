@@ -73,6 +73,10 @@
 		09C7F5562C0C7B9F001B2E04 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F4E82C0A2507001B2E04 /* NetworkService.swift */; };
 		09C7F5572C0C7BAA001B2E04 /* RefreshTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F5212C0B4FC9001B2E04 /* RefreshTokenRequest.swift */; };
 		09C7F5582C0C7BB7001B2E04 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F4ED2C0A285D001B2E04 /* LoginResponse.swift */; };
+		09C7F55A2C0C7E88001B2E04 /* TotalWeatherStationsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F5592C0C7E88001B2E04 /* TotalWeatherStationsWidget.swift */; };
+		09C7F55C2C0C8249001B2E04 /* WeatherXMWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F55B2C0C8249001B2E04 /* WeatherXMWidgetBundle.swift */; };
+		09C7F55E2C0C83F9001B2E04 /* NetworkStatsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F55D2C0C83F9001B2E04 /* NetworkStatsResponse.swift */; };
+		09C7F55F2C0C865E001B2E04 /* NetworkStatsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F55D2C0C83F9001B2E04 /* NetworkStatsResponse.swift */; };
 		09D9FB952BFA1CD70026EDA3 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9FB942BFA1CD70026EDA3 /* LogInView.swift */; };
 		09D9FB972BFA1CE50026EDA3 /* LoggedOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9FB962BFA1CE50026EDA3 /* LoggedOutView.swift */; };
 		09D9FBA02BFA58150026EDA3 /* WeatherStationsHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9FB9F2BFA58150026EDA3 /* WeatherStationsHomeView.swift */; };
@@ -703,6 +707,9 @@
 		09C7F5422C0C6AA7001B2E04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09C7F5442C0C6AA7001B2E04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09C7F5532C0C7B70001B2E04 /* CoinGeckoNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinGeckoNetworkService.swift; sourceTree = "<group>"; };
+		09C7F5592C0C7E88001B2E04 /* TotalWeatherStationsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalWeatherStationsWidget.swift; sourceTree = "<group>"; };
+		09C7F55B2C0C8249001B2E04 /* WeatherXMWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherXMWidgetBundle.swift; sourceTree = "<group>"; };
+		09C7F55D2C0C83F9001B2E04 /* NetworkStatsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatsResponse.swift; sourceTree = "<group>"; };
 		09D9FB942BFA1CD70026EDA3 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		09D9FB962BFA1CE50026EDA3 /* LoggedOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOutView.swift; sourceTree = "<group>"; };
 		09D9FB9F2BFA58150026EDA3 /* WeatherStationsHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStationsHomeView.swift; sourceTree = "<group>"; };
@@ -1309,8 +1316,11 @@
 		09C7F53F2C0C6AA5001B2E04 /* WMXPriceComplicationWidget */ = {
 			isa = PBXGroup;
 			children = (
+				09C7F55B2C0C8249001B2E04 /* WeatherXMWidgetBundle.swift */,
 				09C7F5402C0C6AA5001B2E04 /* WMXPriceComplicationWidget.swift */,
+				09C7F5592C0C7E88001B2E04 /* TotalWeatherStationsWidget.swift */,
 				09C7F5532C0C7B70001B2E04 /* CoinGeckoNetworkService.swift */,
+				09C7F55D2C0C83F9001B2E04 /* NetworkStatsResponse.swift */,
 				09C7F5422C0C6AA7001B2E04 /* Assets.xcassets */,
 				09C7F5442C0C6AA7001B2E04 /* Info.plist */,
 			);
@@ -3105,6 +3115,7 @@
 				09C7F5052C0A946B001B2E04 /* WeatherFormatter.swift in Sources */,
 				09C7F5072C0A94A3001B2E04 /* UnitsEnum.swift in Sources */,
 				09C7F4F82C0A2B48001B2E04 /* LocationCoordinates.swift in Sources */,
+				09C7F55F2C0C865E001B2E04 /* NetworkStatsResponse.swift in Sources */,
 				09C7F4FF2C0A8887001B2E04 /* LocalizableConstants.swift in Sources */,
 				09C7F5012C0A8DAE001B2E04 /* Dimensions.swift in Sources */,
 				098F62792BFA0CBA00398D7D /* ColorEnum.swift in Sources */,
@@ -3118,6 +3129,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09C7F55A2C0C7E88001B2E04 /* TotalWeatherStationsWidget.swift in Sources */,
 				09C7F54D2C0C756A001B2E04 /* FontSizeEnum.swift in Sources */,
 				09C7F5572C0C7BAA001B2E04 /* RefreshTokenRequest.swift in Sources */,
 				09C7F5552C0C7B77001B2E04 /* CoinGeckoNetworkService.swift in Sources */,
@@ -3126,6 +3138,8 @@
 				09C7F5512C0C75F3001B2E04 /* Color+.swift in Sources */,
 				09C7F5522C0C7655001B2E04 /* Dimensions.swift in Sources */,
 				09C7F54F2C0C75D1001B2E04 /* CGFloat+.swift in Sources */,
+				09C7F55E2C0C83F9001B2E04 /* NetworkStatsResponse.swift in Sources */,
+				09C7F55C2C0C8249001B2E04 /* WeatherXMWidgetBundle.swift in Sources */,
 				09C7F5502C0C75E9001B2E04 /* ColorEnum.swift in Sources */,
 				09C7F5412C0C6AA5001B2E04 /* WMXPriceComplicationWidget.swift in Sources */,
 			);
