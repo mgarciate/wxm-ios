@@ -13,7 +13,7 @@ struct StationDetailsContainerView: View {
     var body: some View {
         TabView {
             CurrentWeatherView(device: device)
-            WeatherStationTemperatureChartView()
+            WeatherStationTemperatureChartView(device: device)
             if let latitude = device.location?.lat, let longitude = device.location?.lon {
                 WeatherStationMapView(location: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
             }

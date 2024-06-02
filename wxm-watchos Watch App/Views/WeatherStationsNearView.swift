@@ -8,12 +8,14 @@
 import SwiftUI
 
 protocol WeatherStationsNearViewModelProtocol: ObservableObject {
+    var isLoading: Bool { get set }
     var devices: [NetworkDevicesResponse] { get set }
     
     func fetchData() async
 }
 
 final class WeatherStationsNearViewModel: WeatherStationsNearViewModelProtocol {
+    @Published var isLoading = true
     @Published var devices = [NetworkDevicesResponse]()
     
     init() {
@@ -34,6 +36,9 @@ final class WeatherStationsNearViewModel: WeatherStationsNearViewModelProtocol {
     }
     
     func fetchData() async {
+        await MainActor.run {
+            isLoading = true
+        }
         do {
             print("Start call")
             let cells = try await NetworkService<[PublicHex]>().get(endpoint: .cells)
@@ -51,10 +56,13 @@ final class WeatherStationsNearViewModel: WeatherStationsNearViewModelProtocol {
                     var devicesByCell = try await NetworkService<[NetworkDevicesResponse]>().get(endpoint: .devicesByCell(cellId: cell.index))
                     for i in devicesByCell.indices {
                         devicesByCell[i].location = LocationCoordinates(lat: cell.center.lat, long: cell.center.lon)
+                        devicesByCell[i].attributes.lastActiveAt = devicesByCell[i].lastActiveAt
+                        devicesByCell[i].attributes.isActive = devicesByCell[i].isActive
                     }
                     let devices = devicesByCell
                     await MainActor.run {
                         self.devices.append(contentsOf: devices)
+                        isLoading = false
                     }
                 }
             }
@@ -71,19 +79,25 @@ struct WeatherStationsNearView<ViewModel>: View where ViewModel: WeatherStations
     @StateObject var viewModel: ViewModel
     
     var body: some View {
-        NavigationStack {
-            List(viewModel.devices) { device in
-                NavigationLink {
-                    StationDetailsContainerView(device: device)
-                } label: {
-                    WeatherStationCellView(device: device)
+        Group {
+            if viewModel.isLoading {
+                LoadingView()
+            } else {
+                NavigationStack {
+                    List(viewModel.devices) { device in
+                        NavigationLink {
+                            StationDetailsContainerView(device: device)
+                        } label: {
+                            WeatherStationCellView(device: device)
+                        }
+                    }
+                    .navigationTitle("Near stations")
+                    .listStyle(.carousel)
+                }
+                .background {
+                    Color(colorEnum: .darkBg)
                 }
             }
-            .navigationTitle("Near stations")
-            .listStyle(.carousel)
-        }
-        .background {
-            Color(colorEnum: .top)
         }
         .task {
             await viewModel.fetchData()

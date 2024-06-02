@@ -9,64 +9,61 @@ import SwiftUI
 
 struct WeatherStationCellView: View {
     let device: NetworkDevicesResponse
+    private let unitsManager = WeatherUnitsManager()
     
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(device.address ?? device.name ?? "no address")
+        VStack(alignment: .leading) {
+            if let address = device.address {
+                HStack(spacing: CGFloat(8.0)) {
+                    Text(FontIcon.hexagon.rawValue)
+                        .font(.fontAwesome(font: .FAPro, size: 10.0))
+                        .foregroundColor(Color(colorEnum: .darkBg))
+                    
+                    Text(address)
+                        .font(.system(size: CGFloat(.caption)))
+                        .foregroundColor(Color(colorEnum: .darkBg))
+                        .lineLimit(1)
+                }
+                .WXMCardStyle(backgroundColor: Color(colorEnum: .blueTint),
+                              insideHorizontalPadding: CGFloat(8),
+                              insideVerticalPadding: CGFloat(2),
+                              cornerRadius: CGFloat(.buttonCornerRadius))
+            } else {
+                Text(device.name)
                     .lineLimit(1)
-                HStack {
-                    //                            HStack(spacing: 0.0) {
-                    //                                Image(asset: .wifi)
-                    //                                    .renderingMode(.template)
-                    //                                    .foregroundColor(Color(colorEnum: configuration.stateColor))
-                    //
-                    //                                Text(configuration.lastActiveAt?.lastActiveTime() ?? "-")
-                    //                                    .font(.system(size: CGFloat(.caption)))
-                    //                                    .foregroundColor(Color(colorEnum: configuration.stateColor))
-                    //                                    .padding(.trailing, CGFloat(.smallSidePadding))
-                    //                            }
-                    //                            .WXMCardStyle(backgroundColor: Color(colorEnum: configuration.tintColor),
-                    //                                          insideHorizontalPadding: 0.0,
-                    //                                          insideVerticalPadding: 0.0,
-                    //                                          cornerRadius: CGFloat(.buttonCornerRadius))
-                    HStack(spacing: 0.0) {
-                        Image(asset: .wifi)
-                            .renderingMode(.template)
-                            .foregroundColor(Color.blue)
-                        
-                        Text(device.attributes.lastActiveAt?.lastActiveTime() ?? "no data")
-                            .font(.system(size: CGFloat(10.0)))
-                            .foregroundColor(Color.green)
-                            .padding(.trailing, CGFloat(4))
-                    }
-                    .WXMCardStyle(backgroundColor: Color.pink,
-                                  insideHorizontalPadding: 0.0,
-                                  insideVerticalPadding: 0.0,
-                                  cornerRadius: CGFloat(4))
-                    //                                HStack(spacing: CGFloat(8.0)) {
-                    //                                    Text(FontIcon.hexagon.rawValue)
-                    //                                        .font(.fontAwesome(font: .FAPro, size: 10.0))
-                    //                                        .foregroundColor(Color(colorEnum: .text))
-                    //
-                    //                                    Text("address")
-                    //                                        .font(.system(size: CGFloat(10.0)))
-                    //                                        .foregroundColor(Color(colorEnum: .text))
-                    //                                        .lineLimit(1)
-                    //                                }
-                    //                                .WXMCardStyle(backgroundColor: Color(colorEnum: .blueTint),
-                    //                                              insideHorizontalPadding: CGFloat(8),
-                    //                                              insideVerticalPadding: CGFloat(4),
-                    //                                          cornerRadius: CGFloat(4))
+            }
+            HStack {
+                StationLastActiveView(configuration: StationLastActiveView.Configuration(
+                    lastActiveAt: device.attributes.lastActiveAt,
+                    icon: .wifi,
+                    stateColor: activeStateColor(isActive: device.attributes.isActive),
+                    tintColor: activeStateTintColor(isActive: device.attributes.isActive))
+                )
+                Spacer()
+                if let temperature = device.currentWeather?.temperature {
+                    Text(attributedTemperatureString)
+                } else {
+                    Text("-ºC")
                 }
             }
-            if let temperature = device.currentWeather?.temperature {
-                Text("\(Int(round(temperature)))º")
-            } else {
-                Text("-º")
-            }
         }
-        .background(Color.green)
+    }
+    
+    var attributedTemperatureString: AttributedString {
+        let font = UIFont.systemFont(ofSize: CGFloat(.largeFontSize))
+        let temperatureLiterals: WeatherValueLiterals = WeatherField.temperature.weatherLiterals(from: device.currentWeather, unitsManager: unitsManager) ?? ("", "")
+        
+        var attributedString = AttributedString("\(temperatureLiterals.value)\(temperatureLiterals.unit)")
+        attributedString.font = font
+        attributedString.foregroundColor = Color(colorEnum: .text)
+        
+        if let unitRange = attributedString.range(of: temperatureLiterals.unit) {
+            let superScriptFont = UIFont.systemFont(ofSize: CGFloat(.largeFontSize))
+            attributedString[unitRange].foregroundColor = Color(colorEnum: .darkGrey)
+            attributedString[unitRange].font = superScriptFont
+        }
+        
+        return attributedString
     }
 }
 

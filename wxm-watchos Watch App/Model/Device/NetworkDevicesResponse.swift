@@ -21,13 +21,16 @@ public struct NetworkDevicesResponse: Codable, Identifiable {
     public var rewards: Rewards? = .init()
     public var profile: Profile? = nil
     public var relation: DeviceRelation? = nil
+    public var isActive: Bool = false
+    public var lastActiveAt: String? = ""
 
     public init() {}
 
     enum CodingKeys: String, CodingKey {
-        case id, name, timezone, address, attributes, location, rewards, label, profile, relation
+        case id, name, timezone, address, attributes, location, rewards, label, profile, relation, isActive
 		case batteryState = "bat_state"
         case currentWeather = "current_weather"
+        case lastActiveAt = "lastWeatherStationActivity"
     }
 
     public init(from decoder: Decoder) throws {
@@ -44,6 +47,8 @@ public struct NetworkDevicesResponse: Codable, Identifiable {
         rewards = try values.decodeIfPresent(Rewards.self, forKey: .rewards) ?? Rewards()
         profile = try? values.decodeIfPresent(Profile.self, forKey: .profile)
         relation = try? values.decodeIfPresent(DeviceRelation.self, forKey: .relation)
+        isActive = try values.decodeIfPresent(Bool.self, forKey: .isActive) ?? false
+        lastActiveAt = try? values.decodeIfPresent(String.self, forKey: .lastActiveAt)
     }
 }
 
@@ -222,6 +227,7 @@ extension NetworkDevicesResponse {
         var device = NetworkDevicesResponse()
         device.id = "\(index)"
         device.address = "Address \(index)"
+        device.name = "Name \(index)"
         device.currentWeather = CurrentWeather()
         device.currentWeather?.temperature = 14.4
         device.currentWeather?.feelsLike = 12.5

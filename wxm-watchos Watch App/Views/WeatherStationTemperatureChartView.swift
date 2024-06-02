@@ -18,6 +18,8 @@ struct WeatherItem: Identifiable {
 }
 
 struct WeatherStationTemperatureChartView: View {
+    let device: NetworkDevicesResponse
+    
     var data: [WeatherItem] = {
         var data = [WeatherItem] ()
         let date = Date()
@@ -34,22 +36,26 @@ struct WeatherStationTemperatureChartView: View {
     }()
     
     var body: some View {
-        VStack {
-            Chart(data) { item in
-                LineMark(
-                    x: .value("Date", item.date),
-                    y: .value("Temperature", item.temperature)
-                )
-                RuleMark(y: .value("Average", 15.0))
-                    .foregroundStyle(.red)
+        if device.relation == nil {
+            HiddenContentView(deviceName: device.name)
+        } else {
+            VStack {
+                Chart(data) { item in
+                    LineMark(
+                        x: .value("Date", item.date),
+                        y: .value("Temperature", item.temperature)
+                    )
+                    RuleMark(y: .value("Average", 15.0))
+                        .foregroundStyle(.red)
+                }
+                .padding(.horizontal)
+                Text("ºC Last 24h")
+                    .font(.system(size: CGFloat(.littleCaption)))
             }
-            .padding(.horizontal)
-            Text("ºC Last 24h")
-                .font(.system(size: CGFloat(.littleCaption)))
         }
     }
 }
 
 #Preview {
-    WeatherStationTemperatureChartView()
+    WeatherStationTemperatureChartView(device: NetworkDevicesResponse.dummyData[0])
 }

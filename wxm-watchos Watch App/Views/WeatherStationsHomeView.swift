@@ -8,17 +8,20 @@
 import SwiftUI
 
 protocol WeatherStationsHomeViewModelProtocol: ObservableObject {
+    var isLoading: Bool { get set }
     var devices: [NetworkDevicesResponse] { get set }
     
     func fetchData() async
 }
 
 final class WeatherStationsHomeViewModel: WeatherStationsHomeViewModelProtocol {
+    @Published var isLoading = true
     @Published var devices = [NetworkDevicesResponse]()
     
     init() {}
     
     func fetchData() async {
+        isLoading = true
         do {
             #if DEBUG
             print("Run devices endpoint")
@@ -26,6 +29,7 @@ final class WeatherStationsHomeViewModel: WeatherStationsHomeViewModelProtocol {
             let devices = try await NetworkService<[NetworkDevicesResponse]>().get(endpoint: .myDevices)
             await MainActor.run {
                 self.devices = devices
+                isLoading = false
             }
         } catch {
             #if DEBUG
@@ -37,21 +41,56 @@ final class WeatherStationsHomeViewModel: WeatherStationsHomeViewModelProtocol {
 
 struct WeatherStationsHomeView<ViewModel>: View where ViewModel: WeatherStationsHomeViewModelProtocol {
     @StateObject var viewModel: ViewModel
+    @State private var showNearDevices = false
     
     var body: some View {
-        NavigationStack {
-            List(viewModel.devices) { device in
-                NavigationLink {
-                    StationDetailsContainerView(device: device)
-                } label: {
-                    WeatherStationCellView(device: device)
+        Group {
+            if viewModel.isLoading {
+                LoadingView()
+            } else {
+                NavigationStack {
+                    ZStack {
+                        List(viewModel.devices) { device in
+                            NavigationLink {
+                                StationDetailsContainerView(device: device)
+                            } label: {
+                                WeatherStationCellView(device: device)
+                                    .listRowBackground(Color(colorEnum: .darkestBlue))
+                            }
+                        }
+                        .navigationTitle("Fav. stations")
+                        .listStyle(.carousel)
+                        VStack {
+                            Spacer()
+                            HStack {
+                                Spacer()
+                                ZStack {
+                                    NavigationLink(destination: WeatherStationsNearView(viewModel: WeatherStationsNearViewModel()), isActive: $showNearDevices) {
+                                        EmptyView()
+                                    }
+                                    Button(action: {
+                                        showNearDevices = true
+                                    }) {
+                                        Image(.detectLocation)
+                                            .renderingMode(.template)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 30)
+                                            .padding()
+                                            .background(Color(.bg))
+                                            .foregroundColor(Color(.top))
+                                            .clipShape(Circle())
+                                    }
+                                }
+                                .frame(width: 40, height: 40)
+                            }
+                        }
+                    }
+                }
+                .background {
+                    Color(colorEnum: .darkBg)
                 }
             }
-            .navigationTitle("Fav stations")
-            .listStyle(.carousel)
-        }
-        .background {
-            Color(colorEnum: .top)
         }
         .task {
             await viewModel.fetchData()
@@ -62,5 +101,6 @@ struct WeatherStationsHomeView<ViewModel>: View where ViewModel: WeatherStations
 #Preview {
     let viewModel = WeatherStationsHomeViewModel()
     viewModel.devices = NetworkDevicesResponse.dummyData
+    viewModel.isLoading = false
     return WeatherStationsHomeView(viewModel: viewModel)
 }
