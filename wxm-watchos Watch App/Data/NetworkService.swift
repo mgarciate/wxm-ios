@@ -21,6 +21,9 @@ enum ApiEndpoint {
     case cells
     case devicesByCell(cellId: String)
     case networkStats
+    case deviceHistory(deviceId: String, fromDate: String, toDate: String)
+    case deviceForecast(deviceId: String, fromDate: String, toDate: String)
+    
     
     var rawValue: String {
         switch self {
@@ -36,6 +39,10 @@ enum ApiEndpoint {
             return "cells/\(cellId)/devices"
         case .networkStats:
             return "network/stats"
+        case .deviceHistory(let deviceId, let fromDate, let toDate):
+            return "me/devices/\(deviceId)/history?fromDate=\(fromDate)&toDate=\(toDate)"
+        case .deviceForecast(let deviceId, let fromDate, let toDate):
+            return "me/devices/\(deviceId)/forecast?fromDate=\(fromDate)&toDate=\(toDate)"
         }
     }
 }

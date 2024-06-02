@@ -14,6 +14,9 @@ struct StationDetailsContainerView: View {
         TabView {
             CurrentWeatherView(device: device)
             WeatherStationTemperatureChartView(device: device)
+            if let _ = device.relation {
+                WeatherStationTemperatureForecastChartView(device: device)
+            }
             if let latitude = device.location?.lat, let longitude = device.location?.lon {
                 WeatherStationMapView(location: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
             }

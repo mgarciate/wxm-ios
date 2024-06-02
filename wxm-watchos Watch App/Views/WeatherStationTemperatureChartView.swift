@@ -23,14 +23,18 @@ struct WeatherStationTemperatureChartView: View {
     var data: [WeatherItem] = {
         var data = [WeatherItem] ()
         let date = Date()
+        var temp = 12.0
         (1...24).forEach { index in
             guard let newDate = Calendar.current.date(byAdding: .hour, value: -index, to: date) else { return }
             data.append(
                 WeatherItem(
                     date: newDate,
-                    temperature: Double(Int.random(in: (5...25)))
+                    temperature: temp
                 )
             )
+            if index < 12 { temp += Double.random(in: (0.2...1)) }
+            else if index >= 10, index < 14 {}
+            else { temp -= Double.random(in: (0.2...1.5)) }
         }
         return data
     }()
@@ -45,8 +49,15 @@ struct WeatherStationTemperatureChartView: View {
                         x: .value("Date", item.date),
                         y: .value("Temperature", item.temperature)
                     )
+                    .interpolationMethod(.catmullRom)
                     RuleMark(y: .value("Average", 15.0))
                         .foregroundStyle(.red)
+                }
+                .chartXAxis {
+                    AxisMarks(values: .automatic) { value in
+                        AxisGridLine() // Keep the grid lines
+                        AxisValueLabel(format: .dateTime.hour(), centered: true) // Format to show only time
+                    }
                 }
                 .padding(.horizontal)
                 Text("ºC Last 24h")

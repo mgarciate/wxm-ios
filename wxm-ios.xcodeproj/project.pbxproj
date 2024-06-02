@@ -78,6 +78,9 @@
 		09C7F55E2C0C83F9001B2E04 /* NetworkStatsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F55D2C0C83F9001B2E04 /* NetworkStatsResponse.swift */; };
 		09C7F55F2C0C865E001B2E04 /* NetworkStatsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F55D2C0C83F9001B2E04 /* NetworkStatsResponse.swift */; };
 		09C7F5622C0C88A2001B2E04 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F5612C0C88A2001B2E04 /* LocationService.swift */; };
+		09C7F5642C0C9217001B2E04 /* NetworkDeviceForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F5632C0C9217001B2E04 /* NetworkDeviceForecastResponse.swift */; };
+		09C7F5662C0C9243001B2E04 /* NetworkDeviceHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F5652C0C9243001B2E04 /* NetworkDeviceHistoryResponse.swift */; };
+		09C7F5682C0CAD21001B2E04 /* WeatherStationTemperatureForecastChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F5672C0CAD21001B2E04 /* WeatherStationTemperatureForecastChartView.swift */; };
 		09D9FB952BFA1CD70026EDA3 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9FB942BFA1CD70026EDA3 /* LogInView.swift */; };
 		09D9FB972BFA1CE50026EDA3 /* LoggedOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9FB962BFA1CE50026EDA3 /* LoggedOutView.swift */; };
 		09D9FBA02BFA58150026EDA3 /* WeatherStationsHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9FB9F2BFA58150026EDA3 /* WeatherStationsHomeView.swift */; };
@@ -712,6 +715,9 @@
 		09C7F55B2C0C8249001B2E04 /* WeatherXMWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherXMWidgetBundle.swift; sourceTree = "<group>"; };
 		09C7F55D2C0C83F9001B2E04 /* NetworkStatsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatsResponse.swift; sourceTree = "<group>"; };
 		09C7F5612C0C88A2001B2E04 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		09C7F5632C0C9217001B2E04 /* NetworkDeviceForecastResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDeviceForecastResponse.swift; sourceTree = "<group>"; };
+		09C7F5652C0C9243001B2E04 /* NetworkDeviceHistoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDeviceHistoryResponse.swift; sourceTree = "<group>"; };
+		09C7F5672C0CAD21001B2E04 /* WeatherStationTemperatureForecastChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStationTemperatureForecastChartView.swift; sourceTree = "<group>"; };
 		09D9FB942BFA1CD70026EDA3 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		09D9FB962BFA1CE50026EDA3 /* LoggedOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOutView.swift; sourceTree = "<group>"; };
 		09D9FB9F2BFA58150026EDA3 /* WeatherStationsHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStationsHomeView.swift; sourceTree = "<group>"; };
@@ -1263,6 +1269,8 @@
 				09C7F4F32C0A2B18001B2E04 /* NetworkDevicesInfoResponse.swift */,
 				09C7F4F12C0A2B18001B2E04 /* NetworkDevicesResponse.swift */,
 				09C7F4F22C0A2B18001B2E04 /* NetworkDevicesTypes.swift */,
+				09C7F5632C0C9217001B2E04 /* NetworkDeviceForecastResponse.swift */,
+				09C7F5652C0C9243001B2E04 /* NetworkDeviceHistoryResponse.swift */,
 			);
 			path = Device;
 			sourceTree = "<group>";
@@ -1294,6 +1302,7 @@
 				09C7F52A2C0B9897001B2E04 /* CurrentWeatherView.swift */,
 				09C7F52C2C0B9996001B2E04 /* WeatherStationMapView.swift */,
 				09C7F52F2C0BBA68001B2E04 /* WeatherStationTemperatureChartView.swift */,
+				09C7F5672C0CAD21001B2E04 /* WeatherStationTemperatureForecastChartView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3084,6 +3093,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				098F627B2BFA0CFC00398D7D /* Color+.swift in Sources */,
+				09C7F5662C0C9243001B2E04 /* NetworkDeviceHistoryResponse.swift in Sources */,
 				09C7F50A2C0A95B7001B2E04 /* UnitConstants.swift in Sources */,
 				09D9FBAD2BFD475E0026EDA3 /* WXMCardStyle.swift in Sources */,
 				09C7F50F2C0A97EA001B2E04 /* Collection+.swift in Sources */,
@@ -3109,6 +3119,7 @@
 				09D9FBA22BFA59A90026EDA3 /* StationDetailsContainerView.swift in Sources */,
 				09C7F4FB2C0A8547001B2E04 /* DateExtension.swift in Sources */,
 				09C7F5142C0AA47D001B2E04 /* View+.swift in Sources */,
+				09C7F5682C0CAD21001B2E04 /* WeatherStationTemperatureForecastChartView.swift in Sources */,
 				091AA66F2BF8F8D800DC6382 /* wxm_watchosApp.swift in Sources */,
 				09C7F4E92C0A2507001B2E04 /* NetworkService.swift in Sources */,
 				09C7F51E2C0B4251001B2E04 /* WOSLocationManager.swift in Sources */,
@@ -3129,6 +3140,7 @@
 				09C7F55F2C0C865E001B2E04 /* NetworkStatsResponse.swift in Sources */,
 				09C7F4FF2C0A8887001B2E04 /* LocalizableConstants.swift in Sources */,
 				09C7F5012C0A8DAE001B2E04 /* Dimensions.swift in Sources */,
+				09C7F5642C0C9217001B2E04 /* NetworkDeviceForecastResponse.swift in Sources */,
 				098F62792BFA0CBA00398D7D /* ColorEnum.swift in Sources */,
 				09C7F4EE2C0A285D001B2E04 /* LoginResponse.swift in Sources */,
 				09C7F4EC2C0A2832001B2E04 /* LoginRequest.swift in Sources */,
