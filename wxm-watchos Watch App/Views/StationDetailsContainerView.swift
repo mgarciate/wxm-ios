@@ -20,6 +20,9 @@ struct StationDetailsContainerView: View {
             if let latitude = device.location?.lat, let longitude = device.location?.lon {
                 WeatherStationMapView(location: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
             }
+            if let _ = device.relation {
+                SelectStationView(deviceName: device.name)
+            }
         }
         .tabViewStyle(.verticalPage)
         .background {
