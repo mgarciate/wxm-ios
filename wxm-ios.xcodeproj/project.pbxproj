@@ -58,6 +58,21 @@
 		09C7F5342C0BD76F001B2E04 /* StationLastActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F5332C0BD76F001B2E04 /* StationLastActiveView.swift */; };
 		09C7F5352C0BDBAE001B2E04 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D2CD729D194070044D032 /* Common.swift */; };
 		09C7F5372C0C63F3001B2E04 /* HiddenContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F5362C0C63F3001B2E04 /* HiddenContentView.swift */; };
+		09C7F53D2C0C6AA5001B2E04 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8321E2AC31E4500757A69 /* WidgetKit.framework */; };
+		09C7F53E2C0C6AA5001B2E04 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B832202AC31E4500757A69 /* SwiftUI.framework */; };
+		09C7F5412C0C6AA5001B2E04 /* WMXPriceComplicationWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F5402C0C6AA5001B2E04 /* WMXPriceComplicationWidget.swift */; };
+		09C7F5432C0C6AA7001B2E04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09C7F5422C0C6AA7001B2E04 /* Assets.xcassets */; };
+		09C7F5472C0C6AA7001B2E04 /* WMXPriceComplicationWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 09C7F53C2C0C6AA5001B2E04 /* WMXPriceComplicationWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		09C7F54D2C0C756A001B2E04 /* FontSizeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675489929A91A87008BCF40 /* FontSizeEnum.swift */; };
+		09C7F54E2C0C75B9001B2E04 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09C7F5112C0AA294001B2E04 /* Colors.xcassets */; };
+		09C7F54F2C0C75D1001B2E04 /* CGFloat+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267548A829A91A87008BCF40 /* CGFloat+.swift */; };
+		09C7F5502C0C75E9001B2E04 /* ColorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675489629A91A87008BCF40 /* ColorEnum.swift */; };
+		09C7F5512C0C75F3001B2E04 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267548B029A91A87008BCF40 /* Color+.swift */; };
+		09C7F5522C0C7655001B2E04 /* Dimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5B0C129F8152800834899 /* Dimensions.swift */; };
+		09C7F5552C0C7B77001B2E04 /* CoinGeckoNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F5532C0C7B70001B2E04 /* CoinGeckoNetworkService.swift */; };
+		09C7F5562C0C7B9F001B2E04 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F4E82C0A2507001B2E04 /* NetworkService.swift */; };
+		09C7F5572C0C7BAA001B2E04 /* RefreshTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F5212C0B4FC9001B2E04 /* RefreshTokenRequest.swift */; };
+		09C7F5582C0C7BB7001B2E04 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7F4ED2C0A285D001B2E04 /* LoginResponse.swift */; };
 		09D9FB952BFA1CD70026EDA3 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9FB942BFA1CD70026EDA3 /* LogInView.swift */; };
 		09D9FB972BFA1CE50026EDA3 /* LoggedOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9FB962BFA1CE50026EDA3 /* LoggedOutView.swift */; };
 		09D9FBA02BFA58150026EDA3 /* WeatherStationsHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9FB9F2BFA58150026EDA3 /* WeatherStationsHomeView.swift */; };
@@ -553,6 +568,13 @@
 			remoteGlobalIDString = 091AA66B2BF8F8D800DC6382;
 			remoteInfo = "wxm-watchos Watch App";
 		};
+		09C7F5452C0C6AA7001B2E04 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B52BCC692824FB8F00EA3DA5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 09C7F53B2C0C6AA5001B2E04;
+			remoteInfo = WMXPriceComplicationWidgetExtension;
+		};
 		266D18102ACB0D56007CDB06 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B52BCC692824FB8F00EA3DA5 /* Project object */;
@@ -600,6 +622,17 @@
 				091AA6792BF8F8DA00DC6382 /* wxm-watchos Watch App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09C7F54C2C0C6AA7001B2E04 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				09C7F5472C0C6AA7001B2E04 /* WMXPriceComplicationWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		26B832322AC31E4600757A69 /* Embed Foundation Extensions */ = {
@@ -665,6 +698,11 @@
 		09C7F5312C0BCBF1001B2E04 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		09C7F5332C0BD76F001B2E04 /* StationLastActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationLastActiveView.swift; sourceTree = "<group>"; };
 		09C7F5362C0C63F3001B2E04 /* HiddenContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenContentView.swift; sourceTree = "<group>"; };
+		09C7F53C2C0C6AA5001B2E04 /* WMXPriceComplicationWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WMXPriceComplicationWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		09C7F5402C0C6AA5001B2E04 /* WMXPriceComplicationWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMXPriceComplicationWidget.swift; sourceTree = "<group>"; };
+		09C7F5422C0C6AA7001B2E04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		09C7F5442C0C6AA7001B2E04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09C7F5532C0C7B70001B2E04 /* CoinGeckoNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinGeckoNetworkService.swift; sourceTree = "<group>"; };
 		09D9FB942BFA1CD70026EDA3 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		09D9FB962BFA1CE50026EDA3 /* LoggedOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOutView.swift; sourceTree = "<group>"; };
 		09D9FB9F2BFA58150026EDA3 /* WeatherStationsHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStationsHomeView.swift; sourceTree = "<group>"; };
@@ -1089,6 +1127,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		09C7F5392C0C6AA5001B2E04 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09C7F53E2C0C6AA5001B2E04 /* SwiftUI.framework in Frameworks */,
+				09C7F53D2C0C6AA5001B2E04 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		266D18062ACB0D56007CDB06 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1257,6 +1304,17 @@
 				09C7F51F2C0B49A3001B2E04 /* PublicHex.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		09C7F53F2C0C6AA5001B2E04 /* WMXPriceComplicationWidget */ = {
+			isa = PBXGroup;
+			children = (
+				09C7F5402C0C6AA5001B2E04 /* WMXPriceComplicationWidget.swift */,
+				09C7F5532C0C7B70001B2E04 /* CoinGeckoNetworkService.swift */,
+				09C7F5422C0C6AA7001B2E04 /* Assets.xcassets */,
+				09C7F5442C0C6AA7001B2E04 /* Info.plist */,
+			);
+			path = WMXPriceComplicationWidget;
 			sourceTree = "<group>";
 		};
 		2612AC182AB45AFA00285896 /* Filters */ = {
@@ -2578,6 +2636,7 @@
 				26B832222AC31E4500757A69 /* station-widget */,
 				266D180C2ACB0D56007CDB06 /* station-intent */,
 				091AA66D2BF8F8D800DC6382 /* wxm-watchos Watch App */,
+				09C7F53F2C0C6AA5001B2E04 /* WMXPriceComplicationWidget */,
 				B557E1F128251D6600E0BDCB /* Frameworks */,
 				B52BCC732824FB8F00EA3DA5 /* wxm-ios */,
 				B52BCC722824FB8F00EA3DA5 /* Products */,
@@ -2591,6 +2650,7 @@
 				26B8321D2AC31E4500757A69 /* station-widgetExtension.appex */,
 				266D18092ACB0D56007CDB06 /* station-intent.appex */,
 				091AA66C2BF8F8D800DC6382 /* wxm-watchos Watch App.app */,
+				09C7F53C2C0C6AA5001B2E04 /* WMXPriceComplicationWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2671,15 +2731,34 @@
 				091AA6682BF8F8D800DC6382 /* Sources */,
 				091AA6692BF8F8D800DC6382 /* Frameworks */,
 				091AA66A2BF8F8D800DC6382 /* Resources */,
+				09C7F54C2C0C6AA7001B2E04 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				09C7F5462C0C6AA7001B2E04 /* PBXTargetDependency */,
 			);
 			name = "wxm-watchos Watch App";
 			productName = "wxm-watchos Watch App";
 			productReference = 091AA66C2BF8F8D800DC6382 /* wxm-watchos Watch App.app */;
 			productType = "com.apple.product-type.application";
+		};
+		09C7F53B2C0C6AA5001B2E04 /* WMXPriceComplicationWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09C7F5482C0C6AA7001B2E04 /* Build configuration list for PBXNativeTarget "WMXPriceComplicationWidgetExtension" */;
+			buildPhases = (
+				09C7F5382C0C6AA5001B2E04 /* Sources */,
+				09C7F5392C0C6AA5001B2E04 /* Frameworks */,
+				09C7F53A2C0C6AA5001B2E04 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WMXPriceComplicationWidgetExtension;
+			productName = WMXPriceComplicationWidgetExtension;
+			productReference = 09C7F53C2C0C6AA5001B2E04 /* WMXPriceComplicationWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		266D18082ACB0D56007CDB06 /* station-intent */ = {
 			isa = PBXNativeTarget;
@@ -2768,11 +2847,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1520;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					091AA66B2BF8F8D800DC6382 = {
 						CreatedOnToolsVersion = 15.2;
+					};
+					09C7F53B2C0C6AA5001B2E04 = {
+						CreatedOnToolsVersion = 15.4;
 					};
 					266D18082ACB0D56007CDB06 = {
 						CreatedOnToolsVersion = 15.0;
@@ -2830,6 +2912,7 @@
 				26B8321C2AC31E4500757A69 /* station-widgetExtension */,
 				266D18082ACB0D56007CDB06 /* station-intent */,
 				091AA66B2BF8F8D800DC6382 /* wxm-watchos Watch App */,
+				09C7F53B2C0C6AA5001B2E04 /* WMXPriceComplicationWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -2878,6 +2961,15 @@
 				09D9FBA92BFD1EF60026EDA3 /* Font Awesome 6 Pro-Light-300.otf in Resources */,
 				09D9FBAA2BFD1EF60026EDA3 /* Font Awesome 6 Sharp-Solid-900.otf in Resources */,
 				09C7F5122C0AA294001B2E04 /* Colors.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09C7F53A2C0C6AA5001B2E04 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09C7F5432C0C6AA7001B2E04 /* Assets.xcassets in Resources */,
+				09C7F54E2C0C75B9001B2E04 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3019,6 +3111,23 @@
 				09C7F4EE2C0A285D001B2E04 /* LoginResponse.swift in Sources */,
 				09C7F4EC2C0A2832001B2E04 /* LoginRequest.swift in Sources */,
 				09C7F5322C0BCBF1001B2E04 /* LoadingView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09C7F5382C0C6AA5001B2E04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09C7F54D2C0C756A001B2E04 /* FontSizeEnum.swift in Sources */,
+				09C7F5572C0C7BAA001B2E04 /* RefreshTokenRequest.swift in Sources */,
+				09C7F5552C0C7B77001B2E04 /* CoinGeckoNetworkService.swift in Sources */,
+				09C7F5562C0C7B9F001B2E04 /* NetworkService.swift in Sources */,
+				09C7F5582C0C7BB7001B2E04 /* LoginResponse.swift in Sources */,
+				09C7F5512C0C75F3001B2E04 /* Color+.swift in Sources */,
+				09C7F5522C0C7655001B2E04 /* Dimensions.swift in Sources */,
+				09C7F54F2C0C75D1001B2E04 /* CGFloat+.swift in Sources */,
+				09C7F5502C0C75E9001B2E04 /* ColorEnum.swift in Sources */,
+				09C7F5412C0C6AA5001B2E04 /* WMXPriceComplicationWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3428,6 +3537,11 @@
 			target = 091AA66B2BF8F8D800DC6382 /* wxm-watchos Watch App */;
 			targetProxy = 091AA6772BF8F8DA00DC6382 /* PBXContainerItemProxy */;
 		};
+		09C7F5462C0C6AA7001B2E04 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 09C7F53B2C0C6AA5001B2E04 /* WMXPriceComplicationWidgetExtension */;
+			targetProxy = 09C7F5452C0C6AA7001B2E04 /* PBXContainerItemProxy */;
+		};
 		266D18112ACB0D56007CDB06 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 266D18082ACB0D56007CDB06 /* station-intent */;
@@ -3444,6 +3558,7 @@
 		091AA67B2BF8F8DA00DC6382 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconWatch;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -3482,6 +3597,7 @@
 		091AA67C2BF8F8DA00DC6382 /* Mock */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconWatch;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -3519,6 +3635,7 @@
 		091AA67D2BF8F8DA00DC6382 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconWatch;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -3551,6 +3668,113 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Release;
+		};
+		09C7F5492C0C6AA7001B2E04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G6DMWDA6X5;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WMXPriceComplicationWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WMXPriceComplicationWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weatherxm.app.debug.watchkitapp.WMXPriceComplicationWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+			};
+			name = Debug;
+		};
+		09C7F54A2C0C6AA7001B2E04 /* Mock */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WMXPriceComplicationWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WMXPriceComplicationWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weatherxm.app.watchkitapp.WMXPriceComplicationWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+			};
+			name = Mock;
+		};
+		09C7F54B2C0C6AA7001B2E04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G6DMWDA6X5;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WMXPriceComplicationWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WMXPriceComplicationWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weatherxm.app.watchkitapp.WMXPriceComplicationWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
 			};
 			name = Release;
 		};
@@ -4104,6 +4328,16 @@
 				091AA67B2BF8F8DA00DC6382 /* Debug */,
 				091AA67C2BF8F8DA00DC6382 /* Mock */,
 				091AA67D2BF8F8DA00DC6382 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		09C7F5482C0C6AA7001B2E04 /* Build configuration list for PBXNativeTarget "WMXPriceComplicationWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09C7F5492C0C6AA7001B2E04 /* Debug */,
+				09C7F54A2C0C6AA7001B2E04 /* Mock */,
+				09C7F54B2C0C6AA7001B2E04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

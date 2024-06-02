@@ -16,6 +16,10 @@ struct CurrentWeatherView: View {
             Group {
                 HStack(spacing: 0.0) {
                     VStack(spacing: 0.0) {
+                        
+                        Text(device.name)
+                            .font(.system(size: CGFloat(.caption)))
+                        
                         Image(device.currentWeather?.icon ?? "")
                             .resizable()
                             .aspectRatio(contentMode: .fit)

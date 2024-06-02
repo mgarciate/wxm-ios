@@ -60,6 +60,7 @@ struct WeatherStationsHomeView<ViewModel>: View where ViewModel: WeatherStations
                         }
                         .navigationTitle("Fav. stations")
                         .listStyle(.carousel)
+                        .safeAreaPadding(EdgeInsets(top: 0, leading: 0, bottom: 40, trailing: 0))
                         VStack {
                             Spacer()
                             HStack {

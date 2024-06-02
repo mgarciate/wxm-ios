@@ -13,25 +13,21 @@ struct WeatherStationCellView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            if let address = device.address {
-                HStack(spacing: CGFloat(8.0)) {
+            HStack(spacing: CGFloat(8.0)) {
+                if let _ = device.address {
                     Text(FontIcon.hexagon.rawValue)
                         .font(.fontAwesome(font: .FAPro, size: 10.0))
                         .foregroundColor(Color(colorEnum: .darkBg))
-                    
-                    Text(address)
-                        .font(.system(size: CGFloat(.caption)))
-                        .foregroundColor(Color(colorEnum: .darkBg))
-                        .lineLimit(1)
                 }
-                .WXMCardStyle(backgroundColor: Color(colorEnum: .blueTint),
-                              insideHorizontalPadding: CGFloat(8),
-                              insideVerticalPadding: CGFloat(2),
-                              cornerRadius: CGFloat(.buttonCornerRadius))
-            } else {
-                Text(device.name)
+                Text(device.address ?? device.name)
+                    .font(.system(size: CGFloat(.caption)))
+                    .foregroundColor(Color(colorEnum: .darkBg))
                     .lineLimit(1)
             }
+            .WXMCardStyle(backgroundColor: Color(colorEnum: .blueTint),
+                          insideHorizontalPadding: CGFloat(8),
+                          insideVerticalPadding: CGFloat(2),
+                          cornerRadius: CGFloat(.buttonCornerRadius))
             HStack {
                 StationLastActiveView(configuration: StationLastActiveView.Configuration(
                     lastActiveAt: device.attributes.lastActiveAt,
